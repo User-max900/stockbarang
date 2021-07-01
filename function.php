@@ -23,7 +23,7 @@ if(isset($_POST['register'])){
 if(isset($_POST['addnewbarang'])){
     $namabarang = $_POST['namabarang'];
     $deskripsi = $_POST['deskripsi'];
-    $stock = $_POST['stock'];
+    $stock = $_POST['QTY'];
     $harga = $_POST['harga'];
 
     $addtotable = mysqli_query($conn, "insert into stock (namabarang, deskripsi, stock, harga) values('$namabarang', '$deskripsi', '$stock', '$harga')");
