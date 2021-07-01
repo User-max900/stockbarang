@@ -2,7 +2,7 @@
 session_start();
 
 //Membuat koneksi ke database
-$conn = mysqli_connect("localhost","root","","stockbarang");
+$conn = mysqli_connect("remotemysql.com","cXy2zBxpA7","NOnKOXkQmW","cXy2zBxpA7");
 
 //login
 if(isset($_POST['register'])){
