@@ -6,7 +6,7 @@ $conn = mysqli_connect("remotemysql.com","cXy2zBxpA7","NOnKOXkQmW","cXy2zBxpA7")
 
 //login
 if(isset($_POST['register'])){
-    $email = $_POST['email'];
+    $email = $_POST['username'];
     $password = $_POST['password'];
 
     $addtotable = mysqli_query($conn, "insert into login (email, password) values('$email', '$password')");
@@ -111,44 +111,44 @@ if(isset($_POST['hapusbarang'])){
     }
 }
 
-function registrasi($data) {
-    global $conn;
+// function registrasi($data) {
+//     global $conn;
 
-    $username = strtolower(stripcslashes($data["username"]));
-    $password = mysqli_real_escape_string($conn, $data["password"]);
-    $password2 = mysqli_real_escape_string($conn, $data["password2"]);
+//     $username = strtolower(stripcslashes($data["username"]));
+//     $password = mysqli_real_escape_string($conn, $data["password"]);
+//     $password2 = mysqli_real_escape_string($conn, $data["password2"]);
 
-    //cek username sudah ada / belum
-    $result = mysqli_query($conn, "SELECT email FROM login WHERE email = '$username'" );
+//     //cek username sudah ada / belum
+//     $result = mysqli_query($conn, "SELECT email FROM login WHERE email = '$username'" );
 
-    if (mysqli_fetch_assoc($result)){
-        echo "<script>
-                    alert('username sudah terdaftar');
-            </script>";
-            return false;
-    }
+//     if (mysqli_fetch_assoc($result)){
+//         echo "<script>
+//                     alert('username sudah terdaftar');
+//             </script>";
+//             return false;
+//     }
     
 
 
-    //cek konfirmasi pass
-    if ($password !== $password2 ){
-        echo "<script>
-                    alert('konfirmasi password tidak sama!');
-            </script>";
+//     //cek konfirmasi pass
+//     if ($password !== $password2 ){
+//         echo "<script>
+//                     alert('konfirmasi password tidak sama!');
+//             </script>";
 
-        return false;
-    }
+//         return false;
+//     }
 
-    //enkripsi password
-    $password = password_hash($password, PASSWORD_DEFAULT);
+//     //enkripsi password
+//     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    //tambahkan insert userbaru ke db
+//     //tambahkan insert userbaru ke db
 
-    mysqli_query($conn, "INSERT INTO login VALUES('', '$username', '$password')");
+//     mysqli_query($conn, "INSERT INTO login VALUES('', '$username', '$password')");
 
-    return mysqli_affected_rows($conn);
+//     return mysqli_affected_rows($conn);
 
 
-}
+// }
 
 ?>
